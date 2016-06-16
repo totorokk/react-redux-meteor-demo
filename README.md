@@ -1,4 +1,8 @@
 # react-redux-meteor-demo
+
+####Note
+This demo is not meant to be a full-feature todos app and it's unpolished in many ways. I only focus on react/redux related improvements and discussions, and so should anyone with a pull request. Please don't spend time on polishing any other parts.
+
 ###Demo app using React, Redux, Meteor
 
 To install:

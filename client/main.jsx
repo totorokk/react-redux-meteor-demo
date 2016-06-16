@@ -6,8 +6,8 @@ import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
-import { reducer } from '../imports/reducer';
-import App from '../imports/ui/index.js';
+import { reducer } from '../imports/reducers';
+import App from '../imports/containers';
 import Collections from '../imports/lib/collection';
 
 const store = createStore(
