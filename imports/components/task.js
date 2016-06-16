@@ -1,12 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
 import {
   Button,
 } from 'react-bootstrap';
-import { removeTask } from  '../actions';
 
-// dummy
-class Task extends Component {
+export default class TaskComponent extends Component {
   handleRemoveTask(taskId, e) {
     e.preventDefault();
     this.props.removeTask(taskId);
@@ -20,18 +17,6 @@ class Task extends Component {
   }
 }
 
-Task.propTypes = {
+TaskComponent.propTypes = {
   task: PropTypes.object.isRequired,
 };
-
-// Container
-const mapState = () => ({});
-const mapDispatch = (dispatch, getState) => {
-  return {
-    removeTask: (taskId) => dispatch(removeTask(taskId))
-  }
-};
-
-export default connect(
-  mapState, mapDispatch
-) (Task)

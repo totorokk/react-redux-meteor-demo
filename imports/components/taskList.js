@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
-import { connect } from 'react-redux';
 import {
   Button,
   ButtonToolbar,
@@ -9,13 +8,9 @@ import {
   FormControl
 } from 'react-bootstrap';
 
+import Task from '../containers/task';
 
-import Task from './task.js';
-import { subscribe, addTask } from  '../actions';
-
-
-// dummy
-class App extends Component {
+export default class TaskListComponent extends Component {
   componentDidMount() {
     this.computation = this.props.subscribe();
   }
@@ -26,6 +21,7 @@ class App extends Component {
     e.preventDefault();
     // Have to use findDOMNode with react-bootstrap
     const node = findDOMNode(this.refs.taskInput);
+    if (node.value === '') return;
     const task = {text: node.value};
     this.props.addTask(task);
     node.value = null;
@@ -58,16 +54,6 @@ class App extends Component {
   }
 }
 
-// container
-const mapState = ({tasks, count}) => {
-  return {
-    tasks, count
-  }
-}
-const mapDispatch = (dispatch, getState) => {
-  return {
-    subscribe: () => dispatch(subscribe()),
-    addTask: (task) => dispatch(addTask(task)),
-  }
-}
-export default connect(mapState, mapDispatch)(App)
+TaskListComponent.propTypes = {
+  tasks: PropTypes.array,
+};
